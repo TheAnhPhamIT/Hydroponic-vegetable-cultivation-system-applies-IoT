@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Sans|Lobster" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="views/css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<title>He Thong Trong Rau Thuy Canh IoT</title>
+</head>
+<body>
+	<h1 style="color: white;text-align: center;font-size: 40px;"><img src="views/image/logo02.png">Hệ thống trồng rau thủy canh ứng dụng IOT</h1>
+	<a href="logout" id="logoutBtn">Đăng xuất</a>
+	<div class="grid-container-3c">
+		<div> 
+			<h1> Điều Khiển Hệ Thống </h1>
+			<table>
+				<tr>
+					<td>Webscoket status</td>
+					<td> <span id="status" style="font-weight: bold;"> disconnected </span></td>
+				</tr>
+				<tr>
+					<td>Chế độ điều khiển</td>
+					<td><label class="switch"><input type="checkbox" id = "control" name ="control" disabled="true" /><span class="slider round"></span></label></td>
+				</tr>
+				<tr>
+					<td>Điều khiển đèn</td>
+					<td><label class="switch"><input type="checkbox" id = "led" name ="led" disabled="true" /><span class="slider round"></span></label></td>
+				</tr>
+				<tr>
+					<td>Điều khiển bơm</td>
+					<td><label class="switch"><input type="checkbox" id = "pump" name ="pump" disabled="true"><span class="slider round"></span></label></td>
+				</tr>
+				<tr>
+					<td>Điều khiển quạt</td>
+					<td><label class="switch"><input type="checkbox" id = "fan" name ="fan" disabled="true"><span class="slider round"></span></label></td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<h1>Thông Số Bật/Tắt</h1>
+			<table>
+				<tr>
+					<td>Nhiệt độ bật quạt</td>
+					<td><input type="text" size="6" id="batQuat" readonly>&#176;C</td>
+				</tr>
+				<tr>
+					<td>Cường độ bật đèn</td>
+					<td><input type="text" size="6" id="batDen" readonly>luv</td>
+				</tr>
+				<tr>
+					<td>Thời gian Bơm</td>
+					<td><input type="text" size="6" id="tgBom" readonly>hour</td>
+				</tr>
+				<tr>
+					<td>Thời gian Nghỉ</td>
+					<td><input type="text" size="6" id="tgNghi" readonly>hour</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<h1>Thông Số Cảm Biến</h1>
+			<table>
+				<tr>
+					<td>Nhiệt độ</td>
+					<td><input type="text" size="6" id="temp" readonly>&#176;C</td>
+				</tr>
+				<tr>
+					<td>Độ ẩm</td>
+					<td><input type="text" size="6" id="humd" readonly>%</td>
+				</tr>
+				<tr>
+					<td>Ánh sáng</td>
+					<td><input type="text" size="6" id="lux" readonly>luv</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="get-data-container">
+		<h1>Lấy dữ liệu từ MongoDB Atlas</h1>
+		<div>
+			<div>
+				<p>
+					<span><i class="fab fa-pagelines"></i></span>
+					<a href="get-data-dinh-duong">Lấy dữ liệu dinh dưỡng trồng cây</a>
+				</p>
+			</div>
+			<div>
+				<p>
+					<span><i class="fas fa-temperature-low"></i></span>
+					<a href="get-data-temp">Lấy dữ liệu nhiệt độ</a>
+				</p>
+			</div>	
+		</div>
+		<div>
+			<div>
+				<p>
+					<span><i class="fas fa-shower"></i></span>
+					<a href="get-data-humd">lấy dữ liệu độ ẩm</a>
+				</p>
+			</div>
+			<div>
+				<p>
+					<span><i class="fas fa-sun"></i></span>
+					<a href="get-data-lux">lấy dữ liệu cường độ ánh sáng</a>
+				</p>
+			</div>
+		
+		</div>
+		<div id="tableData">	
+		</div>
+	</div>
+	
+	<div class="grid-container">
+		<div class="graph-data">
+			<h1>Đồ Thị Thông Số Nhiệt Độ-Độ Ẩm</h1>
+			<!-- thiết lập kích thước cho graph thông qua id ChartContainer đã thiết lập ở trên -->
+			<div id="ChartContainer" style="height: 300px; width:90%;"></div>
+		</div>
+		<div class="graph-data">
+			<h1>Đồ Thị Cường Độ Ánh Sáng</h1>
+			<!-- thiết lập kích thước cho graph thông qua id ChartContainer đã thiết lập ở trên -->
+			<div id="ChartContainer2" style="height: 300px; width:90%;"></div>
+		</div>
+
+	</div>
+	
+	<h1 style="color: white;text-align: center;font-size: 40px">Video</h1>
+	<div class = "grid-container">
+		<div><iframe width="100%" height="400" src="https://www.youtube.com/embed/yFCHcD6Juug?list=LLDk_9p6cYwGTbecyjtoxBOw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+		<div><iframe width="100%" height="400" src="https://www.youtube.com/embed/guiZ4O6WOh0?list=LLDk_9p6cYwGTbecyjtoxBOw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+	</div>
+
+	<div class="gallery-section">
+		<div class="inner-width">
+			<h1>My Gallery</h1>
+			<div class="gallery">
+				<a href="views/image/gallery00.jpg" class="image">
+					<img src="views/image/gallery00.jpg" alt="">
+				</a>
+				<a href="views/image/gallery01.jpg" class="image">
+					<img src="views/image/gallery01.jpg" alt="">
+				</a>
+				<a href="views/image/gallery02.jpg" class="image">
+					<img src="views/image/gallery02.jpg" alt="">
+				</a>
+				<a href="views/image/gallery04.jpg" class="image">
+					<img src="views/image/gallery04.jpg" alt="">
+				</a>
+				<a href="views/image/gallery05.jpg" class="image">
+					<img src="views/image/gallery05.jpg" alt="">
+				</a>
+				<a href="views/image/gallery06.jpg" class="image">
+					<img src="views/image/gallery06.jpg" alt="">
+				</a>
+				<a href="views/image/gallery07.jpg" class="image">
+					<img src="views/image/gallery07.jpg" alt="">
+				</a>
+				<a href="views/views/image/gallery08.jpg" class="image">
+					<img src="views/image/gallery08.jpg" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+  		<p>&copy; Design by TheAnhPham<br>
+  			Web Khoa Luan Tot Nghiep - He Thong Trong Rau Thuy Canh Ung Dung IoT
+  		</p>
+  		<ul>
+			<li>
+				<a href="#" class="btn">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="btn">
+					<i class="fab fa-instagram"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="btn">
+					<i class="fab fa-google"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="btn">
+					<i class="fab fa-youtube"></i>
+				</a>
+			</li>
+		
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="views/js/socket.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+		*{
+			margin:0;
+			padding: 10px;
+			box-sizing: border-box;
+
+		}
+
+		body{
+  			background-repeat: no-repeat;
+  			background-size: cover;
+  			color:white;
+  			font-family: 'Josefin Sans', sans-serif;
+		}
+
+		.login-form {
+
+			width: 350px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.login-form h1 {
+			text-align: center;
+			color: white;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+		.login-form input[type="password"],
+		.login-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 2px solid #e74c3c;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+			border-radius: 20px;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #1abc9c;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+			border-radius: 20px;
+		}

@@ -1,0 +1,6 @@
+B1: Download and install nodejs from https://nodejs.org/en/download/
+B2: Download and install git from https://git-scm.com/downloads
+B3: Create folder to store repository
+B4: Click left mouse on folder and chose Git Bash Here
+B5: enter: git clone https://github.com/TheAnhPhamIT/Hydroponic-vegetable-cultivation-system-applies-IoT.git
+B6: after clone repository, enter on git command line: npm install

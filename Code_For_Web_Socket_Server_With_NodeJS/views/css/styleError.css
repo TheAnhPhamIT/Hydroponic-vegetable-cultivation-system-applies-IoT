@@ -1,0 +1,30 @@
+*{
+	margin:0;
+	padding: 10px;
+	box-sizing: border-box;
+
+}
+
+body{
+  		background-repeat: no-repeat;
+  		background-size: cover;
+  		color:white;
+  		font-family: 'Josefin Sans', sans-serif;
+}
+
+h1{
+	color: white;
+	text-align: center;
+	font-size: 40px
+}
+
+a{
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+	text-align: center;
+}
+
+a:hover{
+	color:green;
+}

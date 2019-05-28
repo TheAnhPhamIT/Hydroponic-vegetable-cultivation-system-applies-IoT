@@ -1,0 +1,25 @@
+{
+  "name": "httrongrauthuycanh",
+  "version": "1.0.0",
+  "description": "web khoa luan tot nghiep, use socket to communicate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheAnhPham",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^1.5.0",
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "cryptr": "^4.0.2",
+    "ejs": "^2.6.1",
+    "excel-export": "^0.5.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "fs": "0.0.1-security",
+    "mongodb": "^3.2.3",
+    "path": "^0.12.7",
+    "ws": "^6.2.1"
+  }
+}

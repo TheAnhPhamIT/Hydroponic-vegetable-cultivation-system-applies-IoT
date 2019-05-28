@@ -1,0 +1,60 @@
+		*{
+			margin:0;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		body{
+			background-image:url('../image/managerbg.jpeg');
+  			background-repeat: no-repeat;
+  			background-size: cover;
+  			color:white;
+  			font-family: 'Josefin Sans', sans-serif;
+		}
+
+		h1{
+			background: #F79F1F;
+    		color: white;
+   			border-radius: 10px;
+    		padding: 3px;
+    /* align-items: center; */
+    		text-align: center;
+    		font-family: 'Lobster', cursive;
+		}
+
+		.grid-container {
+  			display: grid;
+			grid-template-columns: auto auto auto;
+  			grid-gap: 10px;
+		}
+		
+		.grid-container > p {
+			padding: 10px;
+			background: #1dd1a1;
+			border-radius: 10px;
+		}
+		.grid-container > p:hover {
+			background: #ee5253;
+		}
+		.grid-container > p{
+			font-size: 25px;
+		}
+		.grid-container > p > a{
+			color:white;
+			font-size:25px;
+			text-decoration:none;
+		}
+
+		@media screen and (max-width:767px) {
+			.grid-container{
+				display: block;
+			}
+
+			.grid-container > p{
+				margin-top:5%;
+			}
+
+			.grid-container > p > a{
+				font-size:18px;
+			}
+		}
